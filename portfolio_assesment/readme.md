@@ -1,4 +1,4 @@
-## Session 3: HTML Foundations – Semantic Structure - [Link](https://willowy-panda-1538fa.netlify.app/)  
+## Session 3: HTML Foundations - [Link](https://willowy-panda-1538fa.netlify.app/)  
 
 ## 📌 Objective
 Build a semantic profile page using HTML5 elements:
