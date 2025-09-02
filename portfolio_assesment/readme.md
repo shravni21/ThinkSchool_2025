@@ -12,7 +12,9 @@ Build a semantic profile page using HTML5 elements:
 
 ## 📂 Deliverables
 - `index.html`  
-- Screenshot of validator results  
+- Screenshot of validator results
+  <img width="1828" height="749" alt="image" src="https://github.com/user-attachments/assets/63d6311c-1114-4f3e-bb61-5845ff5324a0" />
+
 
 ## 🔧 Resources
 - [MDN HTML Guide](https://developer.mozilla.org/en-US/docs/Learn/HTML)  
