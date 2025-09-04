@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+<style>
+    #container {
+        width: 50%;
+        margin: 0 auto;
+        text-align: center;
+    }
+    #card-wrapper{
+        width: 50%;
+        margin: 0 auto;
+        text-align: center;
+    }
+    #card-wrapper h1{
+        font-size: 30px;
+        font-weight: bold;
+    }
+    #card-wrapper input{
+        width: 50%;
+        padding: 10px;
+        margin: 10px;
+    }
+    #add-btn{
+        background-color: rgb(125, 125, 210);
+        border: none;
+        color: white;
+        padding: 10px;
+        margin: 10px;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    #reset-btn{
+        background-color: rgb(210, 125, 125);
+        border: none;
+        color: white;
+        padding: 10px;
+        margin: 10px;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    #card-wrapper p{
+        font-size: 20px;
+        font-weight: bold;
+    }
+</style>
+</head>
+
+<body>
+    <div id="container">
+        <div id="card-wrapper">
+            <h1>DOM Manupilation</h1>
+            <input type="text" id="input-num1" placeholder="Enter First Number">
+            <input type="text" id="input-num2" placeholder="Enter Second Number">
+            <br>
+            <button id="add-btn" onclick="populateDiv()">Calculate Sum</button>
+            <button id="reset-btn" onclick="resetFields()">Reset</button>
+            <p id="result"></p>
+        </div>
+
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>
