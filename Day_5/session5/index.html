@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Day 5 Session 5</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      background: #f8fafc;
+      color: #334155;
+      padding: 2rem;
+      text-align: center;
+    }
+    .btn, .card, .interactive-box, .responsive-img {
+      transition: 0.3s;
+    }
+
+    .btn {
+      padding: 0.7rem 1.5rem;
+      border: none;
+      border-radius: 0.5rem;
+      background: #3b82f6;
+      color: white;
+      cursor: pointer;
+    }
+    .btn:hover { background: #2563eb; transform: translateY(-2px); }
+
+    .card {
+      background: white;
+      border-radius: 1rem;
+      padding: 1rem;
+      margin: 2rem auto;
+      max-width: 350px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      cursor: pointer;
+    }
+    .card:hover { transform: translateY(-5px); }
+
+    .interactive-box {
+      width: 100px; height: 100px;
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      border-radius: 1rem;
+      margin: 2rem auto;
+      cursor: pointer;
+    }
+    .interactive-box:hover { transform: rotate(45deg) scale(1.1); border-radius: 50%; }
+
+    .responsive-img {
+      width: 100%; max-width: 400px;
+      border-radius: 0.5rem;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      margin-top: 2rem;
+    }
+    .responsive-img:hover { transform: scale(1.05); }
+
+    .notification {
+      position: fixed;
+      top: 20px; right: 20px;
+      background: #10b981;
+      color: white;
+      padding: 0.8rem 1.2rem;
+      border-radius: 0.5rem;
+      opacity: 0; transform: translateX(200px);
+      transition: 0.3s;
+    }
+    .notification.show { opacity: 1; transform: translateX(0); }
+  </style>
+</head>
+<body>
+  <h1>Day 5 Session 5</h1>
+
+  <button class="btn" id="btn">Click Me</button>
+
+  <div class="card" id="card">
+    <h3>Simple Card</h3>
+    <p>This card lifts on hover.</p>
+  </div>
+
+  <div class="interactive-box" id="box"></div>
+
+  <img src="https://picsum.photos/600/400" alt="Sample" class="responsive-img" loading="lazy">
+
+  <div class="notification" id="notification"></div>
+
+  <script>
+    const notify = msg => {
+      const n = document.getElementById('notification');
+      n.textContent = msg;
+      n.classList.add('show');
+      setTimeout(() => n.classList.remove('show'), 2000);
+    };
+    document.getElementById('btn').onclick = () => notify('Button clicked!');
+    document.getElementById('box').onclick = () => notify('Box clicked!');
+  </script>
+</body>
+</html>
