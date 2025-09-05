@@ -1,0 +1,31 @@
+{
+	"Print to console": {
+		"prefix": "log",
+		"body": [
+			"console.log('$1');",
+			"$2"
+		],
+		"description": "Log output to console"
+	},
+	"HTML Comment": {
+		"prefix": "cmt",
+		"body": [
+			"<!-- $1 -->"
+		],
+		"description": "Insert HTML comment"
+	},
+	  "Script Tag": {
+    "prefix": "script",
+    "body": [
+      "<script src=\"$1\"></script>"
+    ],
+    "description": "Insert script tag with src"
+  },
+    "Link Stylesheet": {
+    "prefix": "linkcss",
+    "body": [
+      "<link rel=\"stylesheet\" href=\"$1\">"
+    ],
+    "description": "Insert link tag for external CSS"
+  }
+}

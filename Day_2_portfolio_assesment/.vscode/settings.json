@@ -1,0 +1,17 @@
+{
+  // 🎨 Color tweaks
+  "workbench.colorCustomizations": {
+    "activityBar.background": "#800080",        
+    "activityBar.foreground": "#FFFFFF",        
+    "activityBarBadge.background": "#BA55D3",  
+    "sideBar.background": "#2E1A47",            
+    "statusBar.background": "#4B0082",         
+    "editorCursor.foreground": "#FF00FF"        
+  },
+
+  // ✍️ Editor preferences
+  "editor.fontSize": 14,                        
+  "editor.lineNumbers": "relative",             
+  "editor.cursorSmoothCaretAnimation": true,   
+  "editor.minimap.enabled": false               
+}
