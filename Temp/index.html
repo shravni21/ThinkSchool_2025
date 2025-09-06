@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Web Dev Cheatsheet</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-primary: #f8fafc;
+      --bg-secondary: #ffffff;
+      --text-primary: #334155;
+      --text-secondary: #64748b;
+      --border-color: #cbd5e1;
+      --accent-color: #3b82f6;
+      --card-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+      --code-bg: #f1f5f9;
+    }
+
+    [data-theme="dark"] {
+      --bg-primary: #0f172a;
+      --bg-secondary: #1e293b;
+      --text-primary: #f1f5f9;
+      --text-secondary: #94a3b8;
+      --border-color: #334155;
+      --accent-color: #60a5fa;
+      --card-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+      --code-bg: #334155;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Roboto', sans-serif;
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      line-height: 1.6;
+      transition: all 0.3s ease;
+    }
+
+    .header-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 2rem;
+      background: var(--bg-secondary);
+      box-shadow: var(--card-shadow);
+      margin-bottom: 2rem;
+    }
+
+    .header-container h1 {
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--accent-color);
+      margin: 0;
+    }
+
+    .header-controls {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .sheetNav ul {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+    }
+
+    .sheetNav ul li {
+      background-color: var(--bg-primary);
+      border: 2px solid var(--border-color);
+      border-radius: 12px;
+      padding: 12px 24px;
+      font-size: 1rem;
+      cursor: pointer;
+      color: var(--text-primary);
+      transition: all 0.3s ease;
+      font-weight: 500;
+    }
+
+    .sheetNav ul li:hover {
+      background-color: var(--accent-color);
+      color: white;
+      border-color: var(--accent-color);
+      transform: translateY(-2px);
+    }
+
+    .sheetNav ul li.active {
+      background-color: var(--accent-color);
+      color: white;
+      border-color: var(--accent-color);
+    }
+
+    .search-bar {
+      padding: 12px 16px;
+      border: 2px solid var(--border-color);
+      border-radius: 12px;
+      font-size: 1rem;
+      color: var(--text-primary);
+      background: var(--bg-secondary);
+      width: 250px;
+      transition: all 0.3s ease;
+    }
+
+    .search-bar:focus {
+      outline: none;
+      border-color: var(--accent-color);
+      box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+    }
+
+    #theme-toggle {
+      background: var(--bg-primary);
+      border: 2px solid var(--border-color);
+      border-radius: 12px;
+      padding: 12px;
+      font-size: 1.2rem;
+      cursor: pointer;
+      color: var(--text-primary);
+      transition: all 0.3s ease;
+    }
+
+    #theme-toggle:hover {
+      background-color: var(--accent-color);
+      color: white;
+      border-color: var(--accent-color);
+      transform: rotate(180deg);
+    }
+
+    .mainContainer {
+      padding: 0 2rem 2rem;
+    }
+
+    .cardContainer {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 2rem;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .card {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      padding: 1.5rem;
+      box-shadow: var(--card-shadow);
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--accent-color), #8b5cf6);
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    }
+
+    .card h3 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      color: var(--text-primary);
+    }
+
+    .card h3 small {
+      font-size: 0.75rem;
+      font-weight: 400;
+      color: var(--text-secondary);
+      background: var(--code-bg);
+      padding: 0.25rem 0.5rem;
+      border-radius: 6px;
+      margin-left: 0.5rem;
+    }
+
+    .card p {
+      color: var(--text-secondary);
+      margin-bottom: 1rem;
+      font-size: 0.95rem;
+    }
+
+    .card pre {
+      background: var(--code-bg);
+      border-radius: 8px;
+      padding: 1rem;
+      overflow-x: auto;
+      border: 1px solid var(--border-color);
+    }
+
+    .card code {
+      font-family: 'Courier New', monospace;
+      font-size: 0.9rem;
+      color: var(--text-primary);
+    }
+
+    .sheetFooter {
+      background: var(--bg-secondary);
+      padding: 2rem;
+      text-align: center;
+      border-top: 1px solid var(--border-color);
+      margin-top: 3rem;
+    }
+
+    .para {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+    }
+
+    .no-results {
+      text-align: center;
+      padding: 3rem;
+      color: var(--text-secondary);
+      grid-column: 1 / -1;
+    }
+
+    @media (max-width: 768px) {
+      .header-container {
+        flex-direction: column;
+        gap: 20px;
+        padding: 1.5rem;
+      }
+
+      .header-container h1 {
+        font-size: 1.5rem;
+      }
+
+      .sheetNav ul {
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+
+      .search-bar {
+        width: 200px;
+      }
+
+      .cardContainer {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+
+      .mainContainer {
+        padding: 0 1rem 1rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .header-controls {
+        flex-direction: column;
+        gap: 15px;
+      }
+
+      .search-bar {
+        width: 100%;
+        max-width: 250px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="header-container">
+    <h1>Web Dev Cheatsheet</h1>
+    <nav class="sheetNav">
+      <ul>
+        <li data-category="HTML">HTML</li>
+        <li data-category="CSS">CSS</li>
+        <li data-category="JavaScript">JS</li>
+        <li data-category="All" class="active">All</li>
+      </ul>
+    </nav>
+    <div class="header-controls">
+      <input type="search" placeholder="Search keywords..." class="search-bar" id="search-bar">
+      <button id="theme-toggle" aria-label="Toggle theme">🌙</button>
+    </div>
+  </header>
+
+  <main class="mainContainer">
+    <div id="card-container" class="cardContainer"></div>
+  </main>
+
+  <footer class="sheetFooter">
+    <div>
+      <p class="para">All Rights are reserved. &nbsp; &copy;Shravni21 2025</p>
+    </div>
+  </footer>
+
+  <script>
+    // Data embedded directly in the script
+    const data = {
+      "HTML": [
+        {
+          "keyword": "<div>",
+          "description": "Defines a generic container for content.",
+          "example": "<div>Hello World</div>"
+        },
+        {
+          "keyword": "<a>",
+          "description": "Defines a hyperlink to another page or resource.",
+          "example": "<a href='https://example.com'>Click Here</a>"
+        },
+        {
+          "keyword": "<img>",
+          "description": "Embeds an image into the document.",
+          "example": "<img src='image.jpg' alt='Sample'>"
+        },
+        {
+          "keyword": "<form>",
+          "description": "Defines a form to collect user input.",
+          "example": "<form><input type='text' placeholder='Name'></form>"
+        },
+        {
+          "keyword": "<table>",
+          "description": "Represents tabular data.",
+          "example": "<table><tr><td>Row 1</td></tr></table>"
+        }
+      ],
+      "CSS": [
+        {
+          "keyword": "color",
+          "description": "Sets the text color of an element.",
+          "example": "p { color: red; }"
+        },
+        {
+          "keyword": "background-color",
+          "description": "Sets the background color of an element.",
+          "example": "div { background-color: lightblue; }"
+        },
+        {
+          "keyword": "margin",
+          "description": "Defines the outer spacing of an element.",
+          "example": "h1 { margin: 20px; }"
+        },
+        {
+          "keyword": "padding",
+          "description": "Defines the inner spacing of an element.",
+          "example": "div { padding: 10px; }"
+        },
+        {
+          "keyword": "display: flex",
+          "description": "Enables flexbox layout for flexible design.",
+          "example": ".container { display: flex; }"
+        }
+      ],
+      "JavaScript": [
+        {
+          "keyword": "let",
+          "description": "Declares a block-scoped variable.",
+          "example": "let count = 5;"
+        },
+        {
+          "keyword": "const",
+          "description": "Declares a block-scoped constant.",
+          "example": "const PI = 3.14;"
+        },
+        {
+          "keyword": "function",
+          "description": "Defines a reusable block of code.",
+          "example": "function greet() { return 'Hello'; }"
+        },
+        {
+          "keyword": "addEventListener",
+          "description": "Attaches an event handler to an element.",
+          "example": "button.addEventListener('click', () => alert('Clicked!'));"
+        },
+        {
+          "keyword": "console.log()",
+          "description": "Prints output to the browser console.",
+          "example": "console.log('Debug message');"
+        }
+      ]
+    };
+
+    // Global variables
+    const container = document.getElementById("card-container");
+    const searchInput = document.getElementById("search-bar");
+    const navItems = document.querySelectorAll(".sheetNav ul li");
+    const themeToggle = document.getElementById("theme-toggle");
+    let currentCategory = "All";
+    let allCards = [];
+
+    // Initialize the app
+    function init() {
+      renderCards(data);
+      setupEventListeners();
+      loadTheme();
+    }
+
+    // Render cards based on data
+    function renderCards(dataToRender, category = "All") {
+      container.innerHTML = "";
+      allCards = [];
+
+      const categories = category === "All" ? Object.keys(dataToRender) : [category];
+      
+      categories.forEach(cat => {
+        if (dataToRender[cat]) {
+          dataToRender[cat].forEach(item => {
+            const card = createCard(item, cat);
+            container.appendChild(card);
+            allCards.push({ element: card, data: item, category: cat });
+          });
+        }
+      });
+
+      if (allCards.length === 0) {
+        showNoResults();
+      }
+    }
+
+    // Create a single card element
+    function createCard(item, category) {
+      const card = document.createElement("div");
+      card.className = "card";
+      card.setAttribute('data-category', category);
+
+      card.innerHTML = `
+        <h3>${item.keyword} <small>(${category})</small></h3>
+        <p>${item.description}</p>
+        <pre><code>${item.example}</code></pre>
+      `;
+
+      return card;
+    }
+
+    // Show no results message
+    function showNoResults() {
+      const noResults = document.createElement("div");
+      noResults.className = "no-results";
+      noResults.innerHTML = `
+        <h3>No results found</h3>
+        <p>Try adjusting your search terms or category filter.</p>
+      `;
+      container.appendChild(noResults);
+    }
+
+    // Setup event listeners
+    function setupEventListeners() {
+      // Search functionality
+      searchInput.addEventListener("input", handleSearch);
+
+      // Category navigation
+      navItems.forEach(item => {
+        item.addEventListener("click", () => {
+          const category = item.getAttribute("data-category");
+          handleCategoryChange(category, item);
+        });
+      });
+
+      // Theme toggle
+      themeToggle.addEventListener("click", toggleTheme);
+    }
+
+    // Handle search functionality
+    function handleSearch() {
+      const searchTerm = searchInput.value.toLowerCase().trim();
+      
+      if (searchTerm === "") {
+        // Show all cards for current category
+        renderCards(data, currentCategory);
+        return;
+      }
+
+      const filteredData = {};
+      const categories = currentCategory === "All" ? Object.keys(data) : [currentCategory];
+
+      categories.forEach(category => {
+        const filteredItems = data[category].filter(item => 
+          item.keyword.toLowerCase().includes(searchTerm) ||
+          item.description.toLowerCase().includes(searchTerm) ||
+          item.example.toLowerCase().includes(searchTerm)
+        );
+
+        if (filteredItems.length > 0) {
+          filteredData[category] = filteredItems;
+        }
+      });
+
+      renderCards(filteredData, currentCategory);
+    }
+
+    // Handle category change
+    function handleCategoryChange(category, clickedItem) {
+      // Update active state
+      navItems.forEach(item => item.classList.remove("active"));
+      clickedItem.classList.add("active");
+
+      currentCategory = category;
+      
+      // Clear search when changing category
+      searchInput.value = "";
+      
+      // Render cards for new category
+      renderCards(data, category);
+    }
+
+    // Theme toggle functionality
+    function toggleTheme() {
+      const currentTheme = document.documentElement.getAttribute('data-theme');
+      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+      
+      document.documentElement.setAttribute('data-theme', newTheme);
+      themeToggle.textContent = newTheme === 'dark' ? '☀️' : '🌙';
+      
+      // Save theme preference
+      localStorage.setItem('theme', newTheme);
+    }
+
+    // Load saved theme
+    function loadTheme() {
+      const savedTheme = localStorage.getItem('theme') || 'light';
+      document.documentElement.setAttribute('data-theme', savedTheme);
+      themeToggle.textContent = savedTheme === 'dark' ? '☀️' : '🌙';
+    }
+
+    // Initialize the app when DOM is loaded
+    document.addEventListener('DOMContentLoaded', init);
+  </script>
+</body>
+</html>

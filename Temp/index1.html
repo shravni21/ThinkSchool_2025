@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Dev Cheatsheet</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #3b82f6;
+            --secondary-color: #1e293b;
+            --background-color: #f8fafc;
+            --card-background: #ffffff;
+            --text-primary: #1e293b;
+            --text-secondary: #64748b;
+            --border-color: #e2e8f0;
+            --shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            --shadow-hover: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        [data-theme="dark"] {
+            --background-color: #0f172a;
+            --card-background: #1e293b;
+            --text-primary: #f1f5f9;
+            --text-secondary: #94a3b8;
+            --border-color: #334155;
+            --shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+            --shadow-hover: 0 4px 12px rgba(0, 0, 0, 0.4);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--background-color);
+            color: var(--text-primary);
+            line-height: 1.6;
+            transition: all 0.3s ease;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 2rem;
+            background: var(--card-background);
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+        }
+
+        .header-container h1 {
+            font-size: 1.875rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        .sheetNav ul {
+            display: flex;
+            list-style: none;
+            gap: 1rem;
+        }
+
+        .sheetNav button {
+            background: transparent;
+            border: 2px solid var(--border-color);
+            border-radius: 8px;
+            padding: 0.5rem 1rem;
+            font-size: 0.875rem;
+            font-weight: 500;
+            cursor: pointer;
+            color: var(--text-secondary);
+            transition: all 0.2s ease;
+        }
+
+        .sheetNav button:hover,
+        .sheetNav button.active {
+            background: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+            transform: translateY(-1px);
+        }
+
+        .header-controls {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .search-bar {
+            padding: 0.75rem 1rem;
+            border: 2px solid var(--border-color);
+            border-radius: 8px;
+            font-size: 0.875rem;
+            background: var(--background-color);
+            color: var(--text-primary);
+            transition: all 0.2s ease;
+            width: 250px;
+        }
+
+        .search-bar:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+
+        #theme-toggle {
+            background: var(--card-background);
+            border: 2px solid var(--border-color);
+            border-radius: 8px;
+            padding: 0.5rem;
+            font-size: 1.25rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        #theme-toggle:hover {
+            transform: scale(1.1);
+        }
+
+        .main-container {
+            padding: 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .stats-bar {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            padding: 1rem;
+            background: var(--card-background);
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        .stat-label {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+        }
+
+        .card-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .card {
+            background: var(--card-background);
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+        }
+
+        .card:hover {
+            box-shadow: var(--shadow-hover);
+            transform: translateY(-2px);
+        }
+
+        .card-header {
+            padding: 1.5rem 1.5rem 1rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .card-title {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+        }
+
+        .card-title h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .difficulty-badge {
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+
+        .difficulty-beginner {
+            background: #dcfce7;
+            color: #166534;
+        }
+
+        [data-theme="dark"] .difficulty-beginner {
+            background: #166534;
+            color: #dcfce7;
+        }
+
+        .difficulty-intermediate {
+            background: #fef3c7;
+            color: #92400e;
+        }
+
+        [data-theme="dark"] .difficulty-intermediate {
+            background: #92400e;
+            color: #fef3c7;
+        }
+
+        .difficulty-advanced {
+            background: #fecaca;
+            color: #991b1b;
+        }
+
+        [data-theme="dark"] .difficulty-advanced {
+            background: #991b1b;
+            color: #fecaca;
+        }
+
+        .card-subtitle {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+
+        .card-description {
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+            line-height: 1.5;
+        }
+
+        .card-content {
+            padding: 0 1.5rem 1rem;
+        }
+
+        .code-container {
+            position: relative;
+            background: var(--background-color);
+            border-radius: 8px;
+            overflow: hidden;
+            margin: 1rem 0;
+        }
+
+        .code-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.5rem 1rem;
+            background: var(--secondary-color);
+            color: white;
+            font-size: 0.75rem;
+        }
+
+        .copy-btn {
+            background: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.75rem;
+            transition: all 0.2s ease;
+        }
+
+        .copy-btn:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .copy-btn.copied {
+            background: #10b981;
+            border-color: #10b981;
+        }
+
+        pre {
+            margin: 0;
+            padding: 1rem;
+            background: var(--background-color);
+            overflow-x: auto;
+            font-family: 'Consolas', 'Monaco', monospace;
+            font-size: 0.875rem;
+            line-height: 1.4;
+        }
+
+        .card-footer {
+            padding: 1rem 1.5rem;
+            background: var(--background-color);
+            border-top: 1px solid var(--border-color);
+        }
+
+        .keywords {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .keyword-tag {
+            padding: 0.25rem 0.5rem;
+            background: var(--primary-color);
+            color: white;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+
+        .no-results {
+            text-align: center;
+            padding: 3rem;
+            color: var(--text-secondary);
+        }
+
+        .footer {
+            text-align: center;
+            padding: 2rem;
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+        }
+
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                gap: 1rem;
+                padding: 1rem;
+            }
+
+            .sheetNav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .header-controls {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .search-bar {
+                width: 200px;
+            }
+
+            .stats-bar {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+
+            .card-container {
+                grid-template-columns: 1fr;
+                padding: 0 1rem;
+            }
+
+            .main-container {
+                padding: 1rem;
+            }
+        }
+
+        .fade-in {
+            animation: fadeIn 0.5s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body data-theme="light">
+    <header class="header-container">
+        <h1>💻 Web Dev Cheatsheet</h1>
+        <nav class="sheetNav">
+            <ul>
+                <li><button class="nav-btn active" data-category="all">All</button></li>
+                <li><button class="nav-btn" data-category="HTML">HTML</button></li>
+                <li><button class="nav-btn" data-category="CSS">CSS</button></li>
+                <li><button class="nav-btn" data-category="JavaScript">JavaScript</button></li>
+            </ul>
+        </nav>
+        <div class="header-controls">
+            <input type="search" placeholder="Search keywords, tags..." id="search-input" class="search-bar">
+            <button id="theme-toggle" aria-label="Toggle theme">🌙</button>
+        </div>
+    </header>
+    
+    <main class="main-container">
+        <div class="stats-bar">
+            <div class="stat">
+                <div class="stat-number" id="total-items">0</div>
+                <div class="stat-label">Total Items</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number" id="visible-items">0</div>
+                <div class="stat-label">Showing</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number" id="categories-count">3</div>
+                <div class="stat-label">Categories</div>
+            </div>
+        </div>
+        
+        <div id="card-container" class="card-container"></div>
+        
+        <div id="no-results" class="no-results" style="display: none;">
+            <h3>No results found</h3>
+            <p>Try adjusting your search terms or browse different categories.</p>
+        </div>
+    </main>
+    
+    <footer class="footer">
+        <p>All Rights Reserved • ©Shravni21 2025 • Made with ❤️ for developers</p>
+    </footer>
+
+    <script>
+        // Embedded data - no external JSON file needed
+        const embeddedData = {
+            "HTML": [
+                {
+                    "keyword": "<div>",
+                    "title": "Generic Container",
+                    "description": "Creates a block-level container element that groups other HTML elements together. Essential for layout structure and styling.",
+                    "example": "<div class=\"container\">\n  <p>Content goes here</p>\n</div>",
+                    "associatedKeywords": ["container", "block", "wrapper", "section"],
+                    "category": "Structure",
+                    "difficulty": "Beginner"
+                },
+                {
+                    "keyword": "<a>",
+                    "title": "Hyperlink",
+                    "description": "Creates clickable links to other pages, files, email addresses, or locations within the same page.",
+                    "example": "<a href=\"https://example.com\" target=\"_blank\">\n  Visit Example\n</a>",
+                    "associatedKeywords": ["link", "href", "navigation", "anchor"],
+                    "category": "Navigation",
+                    "difficulty": "Beginner"
+                },
+                {
+                    "keyword": "<img>",
+                    "title": "Image Element",
+                    "description": "Embeds images into the document. Always include alt text for accessibility.",
+                    "example": "<img src=\"image.jpg\" \n     alt=\"Descriptive text\" \n     width=\"300\" \n     height=\"200\">",
+                    "associatedKeywords": ["image", "src", "alt", "media"],
+                    "category": "Media",
+                    "difficulty": "Beginner"
+                },
+                {
+                    "keyword": "<form>",
+                    "title": "Form Element",
+                    "description": "Creates interactive forms for user input with various input types and validation.",
+                    "example": "<form action=\"/submit\" method=\"POST\">\n  <input type=\"text\" name=\"username\" required>\n  <button type=\"submit\">Submit</button>\n</form>",
+                    "associatedKeywords": ["input", "submit", "validation", "method"],
+                    "category": "Forms",
+                    "difficulty": "Intermediate"
+                },
+                {
+                    "keyword": "<table>",
+                    "title": "Table Structure",
+                    "description": "Displays tabular data in rows and columns with proper semantic structure.",
+                    "example": "<table>\n  <thead>\n    <tr><th>Name</th><th>Age</th></tr>\n  </thead>\n  <tbody>\n    <tr><td>John</td><td>25</td></tr>\n  </tbody>\n</table>",
+                    "associatedKeywords": ["thead", "tbody", "tr", "td", "th"],
+                    "category": "Data",
+                    "difficulty": "Intermediate"
+                },
+                {
+                    "keyword": "<section>",
+                    "title": "Content Section",
+                    "description": "Defines sections of content, typically with a heading. Provides semantic meaning for screen readers.",
+                    "example": "<section>\n  <h2>About Us</h2>\n  <p>We are a company...</p>\n</section>",
+                    "associatedKeywords": ["semantic", "heading", "content", "structure"],
+                    "category": "Structure",
+                    "difficulty": "Beginner"
+                },
+                {
+                    "keyword": "<nav>",
+                    "title": "Navigation Container",
+                    "description": "Defines navigation links section, helping screen readers identify navigation areas.",
+                    "example": "<nav>\n  <ul>\n    <li><a href=\"#home\">Home</a></li>\n    <li><a href=\"#about\">About</a></li>\n  </ul>\n</nav>",
+                    "associatedKeywords": ["navigation", "menu", "links", "accessibility"],
+                    "category": "Navigation",
+                    "difficulty": "Beginner"
+                }
+            ],
+            "CSS": [
+                {
+                    "keyword": "display: flex",
+                    "title": "Flexbox Layout",
+                    "description": "Enables flexible box layout for easy alignment and distribution of space among items.",
+                    "example": ".container {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  gap: 1rem;\n}",
+                    "associatedKeywords": ["justify-content", "align-items", "flex-direction", "gap"],
+                    "category": "Layout",
+                    "difficulty": "Intermediate"
+                },
+                {
+                    "keyword": "grid",
+                    "title": "CSS Grid Layout",
+                    "description": "Creates two-dimensional layouts with rows and columns for complex designs.",
+                    "example": ".grid-container {\n  display: grid;\n  grid-template-columns: repeat(3, 1fr);\n  gap: 2rem;\n}",
+                    "associatedKeywords": ["grid-template-columns", "grid-template-rows", "grid-area", "gap"],
+                    "category": "Layout",
+                    "difficulty": "Advanced"
+                },
+                {
+                    "keyword": "transition",
+                    "title": "CSS Transitions",
+                    "description": "Smoothly animates changes between CSS property values over time.",
+                    "example": ".button {\n  background: blue;\n  transition: all 0.3s ease;\n}\n.button:hover {\n  background: red;\n}",
+                    "associatedKeywords": ["animation", "hover", "transform", "ease"],
+                    "category": "Animation",
+                    "difficulty": "Intermediate"
+                },
+                {
+                    "keyword": "media queries",
+                    "title": "Responsive Design",
+                    "description": "Applies different styles based on device characteristics like screen width.",
+                    "example": "@media (max-width: 768px) {\n  .container {\n    flex-direction: column;\n    padding: 1rem;\n  }\n}",
+                    "associatedKeywords": ["responsive", "breakpoints", "mobile-first", "viewport"],
+                    "category": "Responsive",
+                    "difficulty": "Intermediate"
+                },
+                {
+                    "keyword": "position",
+                    "title": "Element Positioning",
+                    "description": "Controls how elements are positioned in the document flow.",
+                    "example": ".fixed-header {\n  position: fixed;\n  top: 0;\n  left: 0;\n  width: 100%;\n  z-index: 1000;\n}",
+                    "associatedKeywords": ["absolute", "relative", "fixed", "sticky", "z-index"],
+                    "category": "Layout",
+                    "difficulty": "Intermediate"
+                },
+                {
+                    "keyword": "box-shadow",
+                    "title": "Element Shadows",
+                    "description": "Adds shadow effects around elements for depth and visual hierarchy.",
+                    "example": ".card {\n  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);\n}\n.card:hover {\n  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);\n}",
+                    "associatedKeywords": ["shadow", "depth", "hover", "rgba"],
+                    "category": "Visual",
+                    "difficulty": "Beginner"
+                }
+            ],
+            "JavaScript": [
+                {
+                    "keyword": "addEventListener",
+                    "title": "Event Handling",
+                    "description": "Attaches event listeners to DOM elements for interactive functionality.",
+                    "example": "const button = document.querySelector('.btn');\nbutton.addEventListener('click', (event) => {\n  console.log('Button clicked!');\n  event.preventDefault();\n});",
+                    "associatedKeywords": ["click", "event", "preventDefault", "querySelector"],
+                    "category": "Events",
+                    "difficulty": "Beginner"
+                },
+                {
+                    "keyword": "fetch API",
+                    "title": "HTTP Requests",
+                    "description": "Makes asynchronous HTTP requests to servers and APIs with Promise-based syntax.",
+                    "example": "fetch('/api/data')\n  .then(response => response.json())\n  .then(data => console.log(data))\n  .catch(error => console.error('Error:', error));",
+                    "associatedKeywords": ["promise", "async", "await", "API", "JSON"],
+                    "category": "Async",
+                    "difficulty": "Intermediate"
+                },
+                {
+                    "keyword": "array methods",
+                    "title": "Array Manipulation",
+                    "description": "Powerful methods for transforming and working with arrays functionally.",
+                    "example": "const numbers = [1, 2, 3, 4, 5];\nconst doubled = numbers\n  .filter(n => n > 2)\n  .map(n => n * 2)\n  .reduce((sum, n) => sum + n, 0);",
+                    "associatedKeywords": ["map", "filter", "reduce", "forEach", "find"],
+                    "category": "Arrays",
+                    "difficulty": "Intermediate"
+                },
+                {
+                    "keyword": "async/await",
+                    "title": "Asynchronous Programming",
+                    "description": "Modern syntax for handling asynchronous operations with cleaner, more readable code.",
+                    "example": "async function fetchUserData(id) {\n  try {\n    const response = await fetch(`/users/${id}`);\n    const user = await response.json();\n    return user;\n  } catch (error) {\n    console.error('Failed to fetch user:', error);\n  }\n}",
+                    "associatedKeywords": ["promise", "try-catch", "fetch", "await"],
+                    "category": "Async",
+                    "difficulty": "Advanced"
+                },
+                {
+                    "keyword": "destructuring",
+                    "title": "Destructuring Assignment",
+                    "description": "Extracts values from arrays or properties from objects into distinct variables.",
+                    "example": "// Object destructuring\nconst { name, age, email } = user;\n\n// Array destructuring\nconst [first, second, ...rest] = numbers;\n\n// Function parameters\nfunction greet({ name, age }) {\n  return `Hello ${name}, you are ${age}`;\n}",
+                    "associatedKeywords": ["spread", "rest", "object", "array"],
+                    "category": "Syntax",
+                    "difficulty": "Intermediate"
+                },
+                {
+                    "keyword": "variables",
+                    "title": "Variable Declaration",
+                    "description": "Different ways to declare variables with varying scopes and mutability.",
+                    "example": "// Block-scoped variable\nlet count = 5;\n\n// Block-scoped constant\nconst PI = 3.14;\n\n// Function-scoped (avoid)\nvar oldStyle = 'deprecated';",
+                    "associatedKeywords": ["let", "const", "var", "scope"],
+                    "category": "Basics",
+                    "difficulty": "Beginner"
+                }
+            ]
+        };
+
+        let allData = embeddedData;
+        let allItems = [];
+        let currentFilter = 'all';
+
+        // Theme toggle functionality
+        const themeToggle = document.getElementById('theme-toggle');
+        const body = document.body;
+
+        // Initialize theme from browser storage if available
+        try {
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            body.setAttribute('data-theme', savedTheme);
+            themeToggle.textContent = savedTheme === 'dark' ? '☀️' : '🌙';
+        } catch (e) {
+            // Fallback if localStorage is not available
+            body.setAttribute('data-theme', 'light');
+            themeToggle.textContent = '🌙';
+        }
+
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = body.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            
+            body.setAttribute('data-theme', newTheme);
+            themeToggle.textContent = newTheme === 'dark' ? '☀️' : '🌙';
+            
+            try {
+                localStorage.setItem('theme', newTheme);
+            } catch (e) {
+                // Ignore if localStorage is not available
+            }
+        });
+
+        // Initialize the application
+        function initializeApp() {
+            allItems = [];
+            
+            // Flatten data structure
+            Object.keys(allData).forEach(category => {
+                allData[category].forEach(item => {
+                    allItems.push({ ...item, category });
+                });
+            });
+
+            updateStats();
+            displayItems(allItems);
+            setupEventListeners();
+        }
+
+        function updateStats() {
+            document.getElementById('total-items').textContent = allItems.length;
+            document.getElementById('visible-items').textContent = allItems.length;
+        }
+
+        function displayItems(items) {
+            const container = document.getElementById('card-container');
+            const noResults = document.getElementById('no-results');
+            
+            if (items.length === 0) {
+                container.style.display = 'none';
+                noResults.style.display = 'block';
+                document.getElementById('visible-items').textContent = '0';
+                return;
+            }
+
+            container.style.display = 'grid';
+            noResults.style.display = 'none';
+            document.getElementById('visible-items').textContent = items.length;
+
+            container.innerHTML = items.map(item => `
+                <div class="card fade-in">
+                    <div class="card-header">
+                        <div class="card-title">
+                            <h3>${item.keyword}</h3>
+                            <span class="difficulty-badge difficulty-${item.difficulty.toLowerCase()}">${item.difficulty}</span>
+                        </div>
+                        <div class="card-subtitle">${item.title} • ${item.category}</div>
+                        <div class="card-description">${item.description}</div>
+                    </div>
+                    
+                    <div class="card-content">
+                        <div class="code-container">
+                            <div class="code-header">
+                                <span>Example</span>
+                                <button class="copy-btn" onclick="copyCode(this, \`${item.example.replace(/`/g, '\\`')}\`)">
+                                    Copy
+                                </button>
+                            </div>
+                            <pre><code>${escapeHtml(item.example)}</code></pre>
+                        </div>
+                    </div>
+                    
+                    <div class="card-footer">
+                        <div class="keywords">
+                            ${item.associatedKeywords.map(keyword => 
+                                `<span class="keyword-tag">${keyword}</span>`
+                            ).join('')}
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
+        function copyCode(button, code) {
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(code).then(() => {
+                    showCopyFeedback(button);
+                }).catch(err => {
+                    console.error('Failed to copy: ', err);
+                    fallbackCopyTextToClipboard(code, button);
+                });
+            } else {
+                fallbackCopyTextToClipboard(code, button);
+            }
+        }
+
+        function fallbackCopyTextToClipboard(text, button) {
+            const textArea = document.createElement("textarea");
+            textArea.value = text;
+            textArea.style.position = "fixed";
+            textArea.style.left = "-999999px";
+            textArea.style.top = "-999999px";
+            document.body.appendChild(textArea);
+            textArea.focus();
+            textArea.select();
+            
+            try {
+                document.execCommand('copy');
+                showCopyFeedback(button);
+            } catch (err) {
+                console.error('Fallback: Oops, unable to copy', err);
+            }
+            
+            document.body.removeChild(textArea);
+        }
+
+        function showCopyFeedback(button) {
+            const originalText = button.textContent;
+            button.textContent = '✓ Copied!';
+            button.classList.add('copied');
+            
+            setTimeout(() => {
+                button.textContent = originalText;
+                button.classList.remove('copied');
+            }, 2000);
+        }
