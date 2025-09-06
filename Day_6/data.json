@@ -1,83 +1,602 @@
 {
   "HTML": [
     {
-      "keyword": "<div>",
-      "description": "Defines a generic container for content.",
-      "example": "<div>Hello World</div>"
+      "keyword": "<html>",
+      "title": "HTML Root Element",
+      "description": "The root element that wraps all HTML content.",
+      "example": "<html>\n  <!-- content here -->\n</html>",
+      "associatedKeywords": [
+        "root",
+        "document",
+        "html"
+      ],
+      "category": "Structure",
+      "difficulty": "Beginner"
+    },
+    {
+      "keyword": "<head>",
+      "title": "Document Head",
+      "description": "Contains metadata, title, links to CSS/JS, and other resources.",
+      "example": "<head>\n  <title>Page Title</title>\n</head>",
+      "associatedKeywords": [
+        "metadata",
+        "title",
+        "css",
+        "js"
+      ],
+      "category": "Structure",
+      "difficulty": "Beginner"
+    },
+    {
+      "keyword": "<body>",
+      "title": "Document Body",
+      "description": "Contains all the visible content of a webpage.",
+      "example": "<body>\n  <h1>Welcome</h1>\n  <p>Page content goes here.</p>\n</body>",
+      "associatedKeywords": [
+        "content",
+        "visible",
+        "page"
+      ],
+      "category": "Structure",
+      "difficulty": "Beginner"
+    },
+    {
+      "keyword": "<h1> - <h6>",
+      "title": "Headings",
+      "description": "Defines headings from largest (<h1>) to smallest (<h6>).",
+      "example": "<h1>Main Heading</h1>\n<h2>Subheading</h2>",
+      "associatedKeywords": [
+        "heading",
+        "title",
+        "subheading"
+      ],
+      "category": "Text",
+      "difficulty": "Beginner"
+    },
+    {
+      "keyword": "<p>",
+      "title": "Paragraph",
+      "description": "Defines a paragraph of text.",
+      "example": "<p>This is a paragraph.</p>",
+      "associatedKeywords": [
+        "text",
+        "paragraph",
+        "content"
+      ],
+      "category": "Text",
+      "difficulty": "Beginner"
     },
     {
       "keyword": "<a>",
-      "description": "Defines a hyperlink to another page or resource.",
-      "example": "<a href='https://example.com'>Click Here</a>"
+      "title": "Anchor / Hyperlink",
+      "description": "Creates clickable links to other pages, files, or locations.",
+      "example": "<a href=\"https://example.com\">Visit Example</a>",
+      "associatedKeywords": [
+        "link",
+        "href",
+        "navigation",
+        "anchor"
+      ],
+      "category": "Navigation",
+      "difficulty": "Beginner"
     },
     {
       "keyword": "<img>",
-      "description": "Embeds an image into the document.",
-      "example": "<img src='image.jpg' alt='Sample'>"
+      "title": "Image",
+      "description": "Embeds images into the page; always use alt text for accessibility.",
+      "example": "<img src=\"image.jpg\" alt=\"Description\">",
+      "associatedKeywords": [
+        "image",
+        "src",
+        "alt",
+        "media"
+      ],
+      "category": "Media",
+      "difficulty": "Beginner"
+    },
+    {
+      "keyword": "<ul>",
+      "title": "Unordered List",
+      "description": "Creates a bullet-point list.",
+      "example": "<ul>\n  <li>Item 1</li>\n  <li>Item 2</li>\n</ul>",
+      "associatedKeywords": [
+        "list",
+        "unordered",
+        "li",
+        "bullet"
+      ],
+      "category": "Lists",
+      "difficulty": "Beginner"
+    },
+    {
+      "keyword": "<ol>",
+      "title": "Ordered List",
+      "description": "Creates a numbered list.",
+      "example": "<ol>\n  <li>First</li>\n  <li>Second</li>\n</ol>",
+      "associatedKeywords": [
+        "list",
+        "ordered",
+        "number",
+        "li"
+      ],
+      "category": "Lists",
+      "difficulty": "Beginner"
+    },
+    {
+      "keyword": "<li>",
+      "title": "List Item",
+      "description": "Defines a single item in a list.",
+      "example": "<ul>\n  <li>Item</li>\n</ul>",
+      "associatedKeywords": [
+        "item",
+        "list",
+        "li"
+      ],
+      "category": "Lists",
+      "difficulty": "Beginner"
+    },
+    {
+      "keyword": "<div>",
+      "title": "Division / Container",
+      "description": "Generic block-level container used for grouping elements.",
+      "example": "<div class=\"container\">\n  <p>Content</p>\n</div>",
+      "associatedKeywords": [
+        "container",
+        "block",
+        "section",
+        "wrapper"
+      ],
+      "category": "Structure",
+      "difficulty": "Beginner"
+    },
+    {
+      "keyword": "<span>",
+      "title": "Inline Container",
+      "description": "Generic inline container used for styling text or inline elements.",
+      "example": "<p>This is <span class=\"highlight\">highlighted</span> text.</p>",
+      "associatedKeywords": [
+        "inline",
+        "text",
+        "span",
+        "style"
+      ],
+      "category": "Text",
+      "difficulty": "Beginner"
     },
     {
       "keyword": "<form>",
-      "description": "Defines a form to collect user input.",
-      "example": "<form><input type='text' placeholder='Name'></form>"
+      "title": "Form",
+      "description": "Container for user input fields and controls.",
+      "example": "<form>\n  <input type=\"text\" name=\"username\">\n  <button type=\"submit\">Submit</button>\n</form>",
+      "associatedKeywords": [
+        "input",
+        "button",
+        "form",
+        "submit"
+      ],
+      "category": "Forms",
+      "difficulty": "Beginner"
+    },
+    {
+      "keyword": "<input>",
+      "title": "Input Field",
+      "description": "Defines a field where users can enter data.",
+      "example": "<input type=\"text\" name=\"username\">",
+      "associatedKeywords": [
+        "input",
+        "text",
+        "field",
+        "form"
+      ],
+      "category": "Forms",
+      "difficulty": "Beginner"
+    },
+    {
+      "keyword": "<button>",
+      "title": "Button",
+      "description": "Clickable button to submit forms or trigger actions.",
+      "example": "<button type=\"submit\">Click Me</button>",
+      "associatedKeywords": [
+        "button",
+        "click",
+        "action"
+      ],
+      "category": "Forms",
+      "difficulty": "Beginner"
     },
     {
       "keyword": "<table>",
-      "description": "Represents tabular data.",
-      "example": "<table><tr><td>Row 1</td></tr></table>"
+      "title": "Table",
+      "description": "Displays tabular data in rows and columns.",
+      "example": "<table>\n  <tr><th>Name</th><th>Age</th></tr>\n  <tr><td>John</td><td>25</td></tr>\n</table>",
+      "associatedKeywords": [
+        "table",
+        "tr",
+        "td",
+        "th",
+        "data"
+      ],
+      "category": "Data",
+      "difficulty": "Beginner"
+    },
+    {
+      "keyword": "<th>",
+      "title": "Table Header Cell",
+      "description": "Defines a header cell in a table.",
+      "example": "<table>\n  <tr><th>Name</th></tr>\n</table>",
+      "associatedKeywords": [
+        "table",
+        "header",
+        "cell"
+      ],
+      "category": "Data",
+      "difficulty": "Beginner"
+    },
+    {
+      "keyword": "<td>",
+      "title": "Table Data Cell",
+      "description": "Defines a standard cell in a table.",
+      "example": "<table>\n  <tr><td>Data</td></tr>\n</table>",
+      "associatedKeywords": [
+        "table",
+        "data",
+        "cell"
+      ],
+      "category": "Data",
+      "difficulty": "Beginner"
+    },
+    {
+      "keyword": "<nav>",
+      "title": "Navigation",
+      "description": "Defines a section with navigation links.",
+      "example": "<nav>\n  <a href=\"#home\">Home</a>\n  <a href=\"#about\">About</a>\n</nav>",
+      "associatedKeywords": [
+        "nav",
+        "menu",
+        "links"
+      ],
+      "category": "Navigation",
+      "difficulty": "Beginner"
     }
   ],
   "CSS": [
     {
       "keyword": "color",
-      "description": "Sets the text color of an element.",
-      "example": "p { color: red; }"
+      "title": "Text Color",
+      "description": "Sets the color of text content.",
+      "example": "p {\n  color: blue;\n}",
+      "associatedKeywords": [
+        "text",
+        "font-color",
+        "color"
+      ],
+      "category": "Text",
+      "difficulty": "Beginner"
     },
     {
       "keyword": "background-color",
+      "title": "Background Color",
       "description": "Sets the background color of an element.",
-      "example": "div { background-color: lightblue; }"
+      "example": "div {\n  background-color: lightgray;\n}",
+      "associatedKeywords": [
+        "background",
+        "color",
+        "style"
+      ],
+      "category": "Visual",
+      "difficulty": "Beginner"
+    },
+    {
+      "keyword": "font-size",
+      "title": "Font Size",
+      "description": "Specifies the size of the text.",
+      "example": "h1 {\n  font-size: 24px;\n}",
+      "associatedKeywords": [
+        "text",
+        "size",
+        "font"
+      ],
+      "category": "Text",
+      "difficulty": "Beginner"
+    },
+    {
+      "keyword": "font-family",
+      "title": "Font Family",
+      "description": "Specifies the typeface for text.",
+      "example": "p {\n  font-family: Arial, sans-serif;\n}",
+      "associatedKeywords": [
+        "font",
+        "text",
+        "typeface"
+      ],
+      "category": "Text",
+      "difficulty": "Beginner"
     },
     {
       "keyword": "margin",
-      "description": "Defines the outer spacing of an element.",
-      "example": "h1 { margin: 20px; }"
+      "title": "Margin",
+      "description": "Controls the space outside of an element.",
+      "example": "div {\n  margin: 10px;\n}",
+      "associatedKeywords": [
+        "spacing",
+        "layout",
+        "outside"
+      ],
+      "category": "Layout",
+      "difficulty": "Beginner"
     },
     {
       "keyword": "padding",
-      "description": "Defines the inner spacing of an element.",
-      "example": "div { padding: 10px; }"
+      "title": "Padding",
+      "description": "Controls the space inside an element, between content and border.",
+      "example": "div {\n  padding: 15px;\n}",
+      "associatedKeywords": [
+        "spacing",
+        "inside",
+        "layout"
+      ],
+      "category": "Layout",
+      "difficulty": "Beginner"
     },
     {
-      "keyword": "display: flex",
-      "description": "Enables flexbox layout for flexible design.",
-      "example": ".container { display: flex; }"
+      "keyword": "border",
+      "title": "Border",
+      "description": "Adds a border around an element.",
+      "example": "div {\n  border: 2px solid black;\n}",
+      "associatedKeywords": [
+        "outline",
+        "frame",
+        "box"
+      ],
+      "category": "Visual",
+      "difficulty": "Beginner"
+    },
+    {
+      "keyword": "width",
+      "title": "Element Width",
+      "description": "Specifies the width of an element.",
+      "example": "div {\n  width: 200px;\n}",
+      "associatedKeywords": [
+        "size",
+        "layout",
+        "width"
+      ],
+      "category": "Layout",
+      "difficulty": "Beginner"
+    },
+    {
+      "keyword": "height",
+      "title": "Element Height",
+      "description": "Specifies the height of an element.",
+      "example": "div {\n  height: 150px;\n}",
+      "associatedKeywords": [
+        "size",
+        "layout",
+        "height"
+      ],
+      "category": "Layout",
+      "difficulty": "Beginner"
+    },
+    {
+      "keyword": "display",
+      "title": "Display Property",
+      "description": "Controls how elements are displayed (block, inline, inline-block, none).",
+      "example": "span {\n  display: inline;\n}\ndiv {\n  display: block;\n}",
+      "associatedKeywords": [
+        "block",
+        "inline",
+        "none",
+        "layout"
+      ],
+      "category": "Layout",
+      "difficulty": "Beginner"
+    },
+    {
+      "keyword": "text-align",
+      "title": "Text Alignment",
+      "description": "Specifies horizontal alignment of text inside an element.",
+      "example": "p {\n  text-align: center;\n}",
+      "associatedKeywords": [
+        "center",
+        "left",
+        "right",
+        "justify"
+      ],
+      "category": "Text",
+      "difficulty": "Beginner"
+    },
+    {
+      "keyword": "background-image",
+      "title": "Background Image",
+      "description": "Sets an image as the background of an element.",
+      "example": "div {\n  background-image: url('image.jpg');\n}",
+      "associatedKeywords": [
+        "image",
+        "background",
+        "url"
+      ],
+      "category": "Visual",
+      "difficulty": "Beginner"
+    },
+    {
+      "keyword": "border-radius",
+      "title": "Rounded Corners",
+      "description": "Rounds the corners of an element.",
+      "example": "div {\n  border-radius: 10px;\n}",
+      "associatedKeywords": [
+        "round",
+        "corners",
+        "circle",
+        "radius"
+      ],
+      "category": "Visual",
+      "difficulty": "Beginner"
+    },
+    {
+      "keyword": "overflow",
+      "title": "Overflow Control",
+      "description": "Specifies what happens when content overflows an element's box.",
+      "example": "div {\n  overflow: hidden;\n}",
+      "associatedKeywords": [
+        "scroll",
+        "hidden",
+        "visible",
+        "clip"
+      ],
+      "category": "Layout",
+      "difficulty": "Beginner"
+    },
+    {
+      "keyword": "position",
+      "title": "Positioning",
+      "description": "Controls how an element is positioned (static, relative, absolute, fixed).",
+      "example": "div {\n  position: relative;\n  top: 10px;\n  left: 20px;\n}",
+      "associatedKeywords": [
+        "relative",
+        "absolute",
+        "fixed",
+        "static"
+      ],
+      "category": "Layout",
+      "difficulty": "Beginner"
     }
   ],
   "JavaScript": [
     {
-      "keyword": "let",
-      "description": "Declares a block-scoped variable.",
-      "example": "let count = 5;"
+      "keyword": "variables",
+      "title": "Variable Declaration",
+      "description": "Different ways to declare variables with varying scopes and mutability.",
+      "example": "// Block-scoped variable\nlet count = 5;\n\n// Block-scoped constant\nconst PI = 3.14;\n\n// Function-scoped (avoid)\nvar oldStyle = 'deprecated';",
+      "associatedKeywords": ["let", "const", "var", "scope"],
+      "category": "Basics",
+      "difficulty": "Beginner"
     },
     {
-      "keyword": "const",
-      "description": "Declares a block-scoped constant.",
-      "example": "const PI = 3.14;"
+      "keyword": "console.log",
+      "title": "Logging Output",
+      "description": "Prints messages or values to the console for debugging.",
+      "example": "console.log('Hello, world!');\nlet sum = 2 + 3;\nconsole.log(sum);",
+      "associatedKeywords": ["print", "debug", "output", "console"],
+      "category": "Basics",
+      "difficulty": "Beginner"
     },
     {
-      "keyword": "function",
-      "description": "Defines a reusable block of code.",
-      "example": "function greet() { return 'Hello'; }"
+      "keyword": "data types",
+      "title": "Primitive Data Types",
+      "description": "Basic types include string, number, boolean, null, undefined, and symbol.",
+      "example": "let name = 'Shravni';\nlet age = 23;\nlet isStudent = true;\nlet empty = null;",
+      "associatedKeywords": ["string", "number", "boolean", "null", "undefined"],
+      "category": "Basics",
+      "difficulty": "Beginner"
+    },
+    {
+      "keyword": "operators",
+      "title": "Operators",
+      "description": "Arithmetic, assignment, comparison, logical, and conditional operators.",
+      "example": "let x = 5 + 3;\nlet isEqual = (x === 8);\nlet y = x > 2 && x < 10;",
+      "associatedKeywords": ["+", "-", "*", "/", "=", "===", "&&", "||"],
+      "category": "Basics",
+      "difficulty": "Beginner"
+    },
+    {
+      "keyword": "if/else",
+      "title": "Conditional Statements",
+      "description": "Execute code blocks based on conditions.",
+      "example": "if(age >= 18) {\n  console.log('Adult');\n} else {\n  console.log('Minor');\n}",
+      "associatedKeywords": ["if", "else", "condition", "logic"],
+      "category": "Control Flow",
+      "difficulty": "Beginner"
+    },
+    {
+      "keyword": "switch",
+      "title": "Switch Statement",
+      "description": "Alternative to multiple if/else conditions for discrete values.",
+      "example": "switch(day) {\n  case 1:\n    console.log('Monday');\n    break;\n  case 2:\n    console.log('Tuesday');\n    break;\n  default:\n    console.log('Other day');\n}",
+      "associatedKeywords": ["switch", "case", "break", "default"],
+      "category": "Control Flow",
+      "difficulty": "Beginner"
+    },
+    {
+      "keyword": "for loop",
+      "title": "For Loop",
+      "description": "Repeatedly execute code for a specific number of iterations.",
+      "example": "for(let i = 0; i < 5; i++) {\n  console.log(i);\n}",
+      "associatedKeywords": ["loop", "iteration", "for", "counter"],
+      "category": "Loops",
+      "difficulty": "Beginner"
+    },
+    {
+      "keyword": "while loop",
+      "title": "While Loop",
+      "description": "Executes code repeatedly while a condition is true.",
+      "example": "let i = 0;\nwhile(i < 5) {\n  console.log(i);\n  i++;\n}",
+      "associatedKeywords": ["loop", "iteration", "while", "condition"],
+      "category": "Loops",
+      "difficulty": "Beginner"
+    },
+    {
+      "keyword": "functions",
+      "title": "Functions",
+      "description": "Reusable blocks of code that can take inputs and return outputs.",
+      "example": "function greet(name) {\n  return `Hello, ${name}`;\n}\nconsole.log(greet('Shravni'));",
+      "associatedKeywords": ["function", "return", "parameters", "call"],
+      "category": "Functions",
+      "difficulty": "Beginner"
+    },
+    {
+      "keyword": "arrow functions",
+      "title": "Arrow Functions",
+      "description": "Compact syntax for defining functions.",
+      "example": "const add = (a, b) => a + b;\nconsole.log(add(2, 3));",
+      "associatedKeywords": ["arrow", "function", "lambda", "=>"],
+      "category": "Functions",
+      "difficulty": "Beginner"
+    },
+    {
+      "keyword": "arrays",
+      "title": "Arrays",
+      "description": "Stores multiple values in a single variable.",
+      "example": "let fruits = ['Apple', 'Banana', 'Orange'];\nconsole.log(fruits[0]);",
+      "associatedKeywords": ["list", "collection", "index", "array"],
+      "category": "Data Structures",
+      "difficulty": "Beginner"
+    },
+    {
+      "keyword": "objects",
+      "title": "Objects",
+      "description": "Key-value pairs for storing related data.",
+      "example": "let person = {name: 'Shravni', age: 23};\nconsole.log(person.name);",
+      "associatedKeywords": ["dictionary", "key-value", "object", "property"],
+      "category": "Data Structures",
+      "difficulty": "Beginner"
     },
     {
       "keyword": "addEventListener",
-      "description": "Attaches an event handler to an element.",
-      "example": "button.addEventListener('click', () => alert('Clicked!'));"
+      "title": "Event Handling",
+      "description": "Attach event listeners to elements for interactivity.",
+      "example": "const button = document.querySelector('.btn');\nbutton.addEventListener('click', () => {\n  console.log('Clicked');\n});",
+      "associatedKeywords": ["event", "click", "listener", "dom"],
+      "category": "DOM",
+      "difficulty": "Beginner"
     },
     {
-      "keyword": "console.log()",
-      "description": "Prints output to the browser console.",
-      "example": "console.log('Debug message');"
+      "keyword": "DOM Manipulation",
+      "title": "Selecting and Changing Elements",
+      "description": "Access and modify HTML elements via JavaScript.",
+      "example": "const heading = document.getElementById('title');\nheading.textContent = 'Hello World';",
+      "associatedKeywords": ["getElementById", "querySelector", "textContent", "innerHTML"],
+      "category": "DOM",
+      "difficulty": "Beginner"
+    },
+    {
+      "keyword": "setTimeout / setInterval",
+      "title": "Timers",
+      "description": "Execute code after a delay or repeatedly at intervals.",
+      "example": "setTimeout(() => console.log('Delayed'), 1000);\nsetInterval(() => console.log('Every 2 sec'), 2000);",
+      "associatedKeywords": ["timer", "delay", "interval", "async"],
+      "category": "Async",
+      "difficulty": "Beginner"
     }
   ]
+
 }
