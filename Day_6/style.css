@@ -1,0 +1,21 @@
+    body {
+      font-family: sans-serif;
+      background: #f8fafc;
+      color: #334155;
+      padding: 2rem;
+      text-align: center;
+    }
+    nav ul {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+    }
+    #theme-toggle {
+    background: transparent;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: inherit;
+}

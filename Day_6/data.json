@@ -1,0 +1,83 @@
+{
+  "HTML": [
+    {
+      "keyword": "<div>",
+      "description": "Defines a generic container for content.",
+      "example": "<div>Hello World</div>"
+    },
+    {
+      "keyword": "<a>",
+      "description": "Defines a hyperlink to another page or resource.",
+      "example": "<a href='https://example.com'>Click Here</a>"
+    },
+    {
+      "keyword": "<img>",
+      "description": "Embeds an image into the document.",
+      "example": "<img src='image.jpg' alt='Sample'>"
+    },
+    {
+      "keyword": "<form>",
+      "description": "Defines a form to collect user input.",
+      "example": "<form><input type='text' placeholder='Name'></form>"
+    },
+    {
+      "keyword": "<table>",
+      "description": "Represents tabular data.",
+      "example": "<table><tr><td>Row 1</td></tr></table>"
+    }
+  ],
+  "CSS": [
+    {
+      "keyword": "color",
+      "description": "Sets the text color of an element.",
+      "example": "p { color: red; }"
+    },
+    {
+      "keyword": "background-color",
+      "description": "Sets the background color of an element.",
+      "example": "div { background-color: lightblue; }"
+    },
+    {
+      "keyword": "margin",
+      "description": "Defines the outer spacing of an element.",
+      "example": "h1 { margin: 20px; }"
+    },
+    {
+      "keyword": "padding",
+      "description": "Defines the inner spacing of an element.",
+      "example": "div { padding: 10px; }"
+    },
+    {
+      "keyword": "display: flex",
+      "description": "Enables flexbox layout for flexible design.",
+      "example": ".container { display: flex; }"
+    }
+  ],
+  "JavaScript": [
+    {
+      "keyword": "let",
+      "description": "Declares a block-scoped variable.",
+      "example": "let count = 5;"
+    },
+    {
+      "keyword": "const",
+      "description": "Declares a block-scoped constant.",
+      "example": "const PI = 3.14;"
+    },
+    {
+      "keyword": "function",
+      "description": "Defines a reusable block of code.",
+      "example": "function greet() { return 'Hello'; }"
+    },
+    {
+      "keyword": "addEventListener",
+      "description": "Attaches an event handler to an element.",
+      "example": "button.addEventListener('click', () => alert('Clicked!'));"
+    },
+    {
+      "keyword": "console.log()",
+      "description": "Prints output to the browser console.",
+      "example": "console.log('Debug message');"
+    }
+  ]
+}
